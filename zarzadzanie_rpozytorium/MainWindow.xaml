@@ -1,0 +1,60 @@
+﻿<Window x:Class="GitHubRepoManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="GitHub Repository Manager" Height="400" Width="600" Background="#FFFF2D2D">
+    <Window.Resources>
+        <!-- Styl Watermark dla TextBoxa -->
+        <Style x:Key="WatermarkTextBox" TargetType="TextBox">
+            <Setter Property="Background" Value="White"/>
+            <Style.Triggers>
+                <Trigger Property="Text" Value="">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <VisualBrush AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                                <VisualBrush.Visual>
+                                    <Label Content="{Binding RelativeSource={RelativeSource AncestorType=TextBox}, Path=Tag}" 
+                                           Foreground="Gray" Padding="5,0,0,0"/>
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="Background" Value="White"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="10" Background="#FF2FD9F1">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- GitHub Authentication -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,10">
+            <TextBlock Text="Username:" VerticalAlignment="Center" Width="80"/>
+            <TextBox x:Name="txtUsername" Width="200" Margin="0,0,10,0" Tag="Enter your GitHub username" Style="{StaticResource WatermarkTextBox}"/>
+            <TextBlock Text="Access Token:" VerticalAlignment="Center" Width="100"/>
+            <TextBox x:Name="txtAccessToken" Width="200" Tag="Enter your GitHub access token" Style="{StaticResource WatermarkTextBox}"/>
+        </StackPanel>
+
+        <Button x:Name="btnAuthenticate" Content="Authenticate" Grid.Row="1" Width="120" HorizontalAlignment="Left" Click="btnAuthenticate_Click"/>
+
+        <!-- List of Repositories -->
+        <ListBox x:Name="lstRepositories" Grid.Row="2" Margin="0,10,0,10" Height="150"/>
+
+        <!-- Add New Repository -->
+        <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="0,0,0,10">
+            <TextBox x:Name="txtNewRepoName" Width="200" Margin="0,0,10,0" Tag="New Repository Name" Style="{StaticResource WatermarkTextBox}"/>
+            <Button x:Name="btnAddRepo" Content="Add Repository" Width="120" Click="btnAddRepo_Click"/>
+        </StackPanel>
+
+        <!-- Delete Repository -->
+        <Button x:Name="btnDeleteRepo" Content="Delete Repository" Grid.Row="4" Width="120" HorizontalAlignment="Left" Click="btnDeleteRepo_Click"/>
+    </Grid>
+</Window>
