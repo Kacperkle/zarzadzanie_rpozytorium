@@ -21,7 +21,6 @@ namespace GitHubRepoManager
 
         private void btnAuthenticate_Click(object sender, RoutedEventArgs e)
         {
-            // Pobranie loginu i tokenu od użytkownika
             username = txtUsername.Text;
             accessToken = txtAccessToken.Text;
 
@@ -62,7 +61,6 @@ namespace GitHubRepoManager
 
         private async void btnAddRepo_Click(object sender, RoutedEventArgs e)
         {
-            // Dodanie nowego repozytorium
             var repoName = txtNewRepoName.Text;
             if (string.IsNullOrEmpty(repoName))
             {
@@ -77,7 +75,7 @@ namespace GitHubRepoManager
             if (response.IsSuccessStatusCode)
             {
                 MessageBox.Show($"Repository '{repoName}' created successfully.");
-                await GetRepositories(); // Odswieżenie listy repozytoriów
+                await GetRepositories();
             }
             else
             {
@@ -87,7 +85,6 @@ namespace GitHubRepoManager
 
         private async void btnDeleteRepo_Click(object sender, RoutedEventArgs e)
         {
-            // Usuwanie wybranego repozytorium
             var selectedRepo = lstRepositories.SelectedItem?.ToString();
             if (string.IsNullOrEmpty(selectedRepo))
             {
@@ -101,7 +98,7 @@ namespace GitHubRepoManager
             if (response.IsSuccessStatusCode)
             {
                 MessageBox.Show($"Repository '{selectedRepo}' deleted successfully.");
-                await GetRepositories(); // Odswieżenie listy repozytoriów
+                await GetRepositories();
             }
             else
             {
