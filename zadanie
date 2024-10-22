@@ -1,0 +1,2 @@
+Aplikacja, która pomaga użytkownikowi w zarządzaniu swoimi repozytoriami GitHub. Powinna umożliwiać wyświetlanie listy repozytoriów, dodawanie nowego repozytorium i usuwanie repozytoriów. Interfejs może być zrealizowany dowolnie (GUI bądź w konsoli).
+Na początku należy pobrać dane autoryzacyjne do GitHub (username i access token) - można to zrealizować dowolnie (wpisywanie przez użytkownika lub pobieranie z pliku konfiguracyjnego).
